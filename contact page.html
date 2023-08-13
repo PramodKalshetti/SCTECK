@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body
+    {
+      width: 100;
+      height: 100vh;
+      display: grid;
+      align-items: center;
+      background: #8e2de2;  
+      font-family: 'Poppins', sans-serif;
+    }
+    .contact-in
+    {
+      width: 80%;
+      height: auto;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      border-radius:10px;      
+      background: #fff;
+      box-shadow: 0px 0px 10px 0px #666;
+    }
+    .contact-map
+    {
+      width: 100%;
+      height: auto;
+      flex: 50%;      
+    }
+    .contact-map iframe
+    {
+      width: 100%; 
+      height: 100%;       
+    }
+    .contact-form
+    {
+      width: 100%;
+      height: auto;
+      flex: 50%;
+      padding: 30px;
+      text-align: center;
+    }
+    .contact-form h1
+    { 
+      margin-bottom: 10px;
+    }
+    .contact-form-txt
+    {
+      width: 100%;
+      height: 40px;
+      color: #000;
+      border: 1px solid #bcbcbc;
+      border-radius: 50px;
+      outline: none;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+    .contact-form-txt::placeholder
+    {
+      color: #aaa;  
+    }
+    .contact-form-textarea
+    {
+      width: 100%;
+      height: 130px;
+      color: #000;
+      border: 1px solid #bcbcbc;
+      border-radius: 50px;
+      outline: none; 
+      margin-bottom: 20px;
+      padding: 15px; 
+      font-family: 'Poppins', sans-serif;
+    }
+    .contact-form-textarea ::placeholder
+    {
+      color: #aaa;  
+    }
+    .contact-form-btn
+    {
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 50px;
+      background: #8e2de2;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 10px 0;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="contact-in">
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30257.267256724717!2d73.89692916484955!3d18.566895836902166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c146e61484b5%3A0xb6482cf7a8b4b3b0!2sViman%20Nagar%2C%20Pune%2C%20Maharashtra%20411014!5e0!3m2!1sen!2sin!4v1691775385572!5m2!1sen!2sin" width="100%" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div> 
+    <div class="contact-form">
+      <h1>Contact Us</h1>
+      <form name="submit-to-google-sheet">
+        <input type="text" name="Name"placeholder="Name" class="contact-form-txt"/>
+        <input type="email"name="Email" placeholder="Email" class="contact-form-txt"/>
+        <textarea placeholder="Message" class="contact-form-textarea"></textarea>
+        <button type="submit" class="contact-form-btn"/>Sumbit</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    const scriptURL = '<SCRIPT URL>'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
